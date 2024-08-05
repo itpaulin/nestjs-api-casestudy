@@ -5,3 +5,7 @@ export class CreateCatDto {
 }
 
 export class UpdateCatDto extends CreateCatDto {}
+
+export class ListAllEntities {
+  limit: number;
+}

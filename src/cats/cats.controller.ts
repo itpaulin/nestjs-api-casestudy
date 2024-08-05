@@ -7,13 +7,14 @@ import {
   Param,
   Post,
   Put,
+  Query,
   Redirect,
   Req,
   Res,
   ValidationPipe,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { CreateCatDto, UpdateCatDto } from './dto';
+import { CreateCatDto, ListAllEntities, UpdateCatDto } from './dto';
 
 @Controller('cats')
 export class CatsController {
@@ -23,8 +24,8 @@ export class CatsController {
   }
 
   @Get()
-  findAll(): string {
-    return 'Mya, Apollo and Chico';
+  findAll(@Query() query: ListAllEntities): string {
+    return 'Mya, Apollo and Chico ' + `limit:${query.limit ?? 0}`;
   }
 
   @Get(':id')
